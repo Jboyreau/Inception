@@ -14,7 +14,13 @@ Docker
 
 	docker run --publish 80:80 --detach --name CONTAINER_NAME IMAGE_NAME
 		-telecharge lance nome nginx.
-
+	
+	docker images
+		lister les images
+	
+	docker rmi $(docker images -q) -f
+		supp all img
+	
 	Bash
 	{
 		docker container start CONTAINER_NAME

@@ -3,7 +3,7 @@ FROM debian:buster
 
 # Met à jour les paquets et installe MariaDB
 RUN apt-get update && \
-    apt-get install -y mariadb-server && \
+    apt-get install -y apt-utils mariadb-server && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
