@@ -1,9 +1,9 @@
 # Utilise Debian Buster comme base
 FROM debian:buster
 
-# Installe PHP et les extensions nécessaires pour WordPress
+# Met à jour les paquets et installe les dépendances nécessaires, y compris curl et apt-utils
 RUN apt-get update && \
-    apt-get install -y php-fpm php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc && \
+    apt-get install -y apt-utils curl php-fpm php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
