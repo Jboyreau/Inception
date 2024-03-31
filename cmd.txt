@@ -1,0 +1,55 @@
+Conection VM:
+	ssh jboyreau@localhost -p 2222
+		Connection a ma vm.
+
+Docker
+{
+	docker version
+		-Verifier le bon fonctionnement de docker.
+
+	docker info
+		Afficher
+			-le nombre de containeurs en fonctionnement.
+			-le nombre d'image stockee dans docker.
+
+	docker run --publish 80:80 --detach --name CONTAINER_NAME IMAGE_NAME
+		-telecharge lance nome nginx.
+
+	Bash
+	{
+		docker container start CONTAINER_NAME
+		docker container stop CONTAINER_NAME
+		docker container exec -it toto bash
+			Apres docker container start, permet d'ouvrir bash dans le container.
+ 
+		docker run -it --publish 80:80 --name nom nginx bash
+			Demarre le container avec bash ouvert dedans.
+	}
+	Network
+	{
+		docker container inspect --format '{{.NetworkSettings.IPAddress}}' CONTAINER_NAME
+			info reseau.
+		docker network inspect
+		
+		docker network create NETWORK_NAME
+			cree un reseau.
+			
+		docker container run --detach --name CONTAINER_NAME --network NETWORK_NAME IMAGE_NAME
+			cree un container en l'attachant a un reseau
+		
+		docker network connect NETWORK_NAME CONTAINER_NAME
+		docker network disconnect NETWORK_NAME CONTAINER_NAME
+	}
+	Image
+	{
+		docker image inspect
+		docker image build -t IMAGE_NAME:TAG .
+			'.' a la fin signifie repertoire courant.
+		docker volume ls
+		docker volume prune
+			detruit l'ensemble des volumes non asssocies a un container.
+	}
+}
+
+docker compose up
+docker compose down
