@@ -7,6 +7,8 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Crée le dossier nécessaire pour le socket de PHP-FPM
+RUN mkdir -p /run/php
 # Crée le répertoire de destination pour WordPress
 RUN mkdir -p /var/www/html
 
