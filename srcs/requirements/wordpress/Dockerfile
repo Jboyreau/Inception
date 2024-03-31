@@ -7,6 +7,9 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Crée le répertoire de destination pour WordPress
+RUN mkdir -p /var/www/html
+
 # Télécharge et décompresse WordPress dans le dossier par défaut
 RUN curl -o wordpress.tar.gz -SL "https://wordpress.org/latest.tar.gz" && \
     tar -xzf wordpress.tar.gz -C /var/www/html --strip-components=1 && \
