@@ -12,14 +12,15 @@ RUN mkdir -p /run/php
 # Crée le répertoire de destination pour WordPress
 RUN mkdir -p /var/www/html
 
-# Télécharge et décompresse WordPress dans le dossier par défaut
-RUN curl -o wordpress.tar.gz -SL "https://wordpress.org/latest.tar.gz" && \
-    tar -xzf wordpress.tar.gz -C /var/www/html --strip-components=1 && \
-    rm wordpress.tar.gz && \
-    chown -R www-data:www-data /var/www/html
+# Copie le script d'entrée et le rend exécutable
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 # Expose le port 9000 pour PHP-FPM
 EXPOSE 9000
+
+# Utilise le script d'entrée personnalisé
+ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["php-fpm7.3", "-F"]
 
