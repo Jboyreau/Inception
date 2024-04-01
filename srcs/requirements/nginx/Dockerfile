@@ -17,6 +17,8 @@ RUN mkdir -p /etc/nginx/ssl && \
 RUN rm /etc/nginx/sites-enabled/default
 COPY conf/nginx.conf /etc/nginx/sites-available/default
 RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+RUN chmod 755 /var/www/html
+RUN chown -R www-data:www-data /var/www/html
 
 # Expose le port 443 pour HTTPS
 EXPOSE 443

@@ -10,13 +10,13 @@ RUN apt-get update && \
 # Crée le dossier nécessaire pour le socket de PHP-FPM
 RUN mkdir -p /run/php
 # Crée le répertoire de destination pour WordPress
-RUN mkdir -p /var/www/wordpress
+RUN mkdir -p /var/www/html
 
 # Télécharge et décompresse WordPress dans le dossier par défaut
 RUN curl -o wordpress.tar.gz -SL "https://wordpress.org/latest.tar.gz" && \
-    tar -xzf wordpress.tar.gz -C /var/www/wordpress --strip-components=1 && \
+    tar -xzf wordpress.tar.gz -C /var/www/html --strip-components=1 && \
     rm wordpress.tar.gz && \
-    chown -R www-data:www-data /var/www/wordpress
+    chown -R www-data:www-data /var/www/html
 
 # Expose le port 9000 pour PHP-FPM
 EXPOSE 9000
