@@ -17,5 +17,5 @@ COPY ./conf/init-db.sql /docker-entrypoint-initdb.d/
 EXPOSE 3306
 
 # Utilise un script d'entrée personnalisé pour s'assurer que MariaDB est initialisé correctement
-CMD ["mysqld_safe"]
+CMD ["mysqld"]
 

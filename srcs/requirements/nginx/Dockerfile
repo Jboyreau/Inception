@@ -11,7 +11,7 @@ RUN apt-get update && \
 RUN mkdir -p /etc/nginx/ssl && \
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt \
-    -subj "/C=US/ST=NY/L=New York/O=Example Company/CN=example.com"
+    -subj "/C=US/ST=NY/L=Paris/O=42/CN=jboyreau.42.fr/UID=jboyreau"
 
 # Supprime la configuration par défaut et ajoute la vôtre
 RUN rm /etc/nginx/sites-enabled/default
