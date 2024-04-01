@@ -7,6 +7,7 @@ services:
       - "443:443"
     volumes:
       - /home/jboyreau/data/wordpress_files:/var/www/html
+      - php_socket:/run/php
     depends_on:
       - wordpress
     restart: always
@@ -21,6 +22,7 @@ services:
       - WORDPRESS_DB_NAME=wordpress
     volumes:
       - /home/jboyreau/data/wordpress_files:/var/www/html
+      - php_socket:/run/php
     depends_on:
       - mariadb
     restart: on-failure
@@ -44,6 +46,8 @@ volumes:
   wordpress_files:
     driver: local
   db_data:
+    driver: local
+  php_socket:
     driver: local
 
 networks:
