@@ -1,5 +1,4 @@
 CREATE DATABASE IF NOT EXISTS wordpress;
-GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpressuser'@'%' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON wordpress.* TO 'adminuser'@'%' IDENTIFIED BY 'adminpassword';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'jboyreau'@'%' IDENTIFIED BY 'azerty';
 FLUSH PRIVILEGES;
 
