@@ -16,5 +16,13 @@ permissions:
 
 re: down up # Reconstruit l'environnement complet
 
-.PHONY: all build up down re permissions
+clean:
+	docker-compose -f srcs/docker-compose.yml down --rmi all --volumes
+	docker system prune -a -f --volumes
+	rm -rf ../data/*
+
+rebuild: clean
+	docker-compose -f srcs/docker-compose.yml up -d
+
+.PHONY: all build up down re permissions rebuild
 

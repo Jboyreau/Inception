@@ -16,6 +16,8 @@ if [ ! -f "/var/www/html/wp-settings.php" ]; then
     chown -R www-data:www-data /var/www/html
 fi
 
+cd /var/www/html
+
 # Configure WordPress si wp-config.php n'existe pas
 if [ ! -f "/var/www/html/wp-config.php" ]; then
     echo "Configuration de WordPress..."
@@ -29,7 +31,8 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
 fi
 
 # Installe WordPress si pas déjà installé
-if ! wp core is-installed --allow-root --path='/var/www/html'; then
+if ! wp core is-installed --allow-root; then
+    echo "Installation de WordPress..."
     wp core install \
         --url="$DOMAIN_NAME" \
         --title="Exemple WordPress" \
@@ -38,8 +41,16 @@ if ! wp core is-installed --allow-root --path='/var/www/html'; then
         --admin_email="$WORDPRESS_ADMIN_EMAIL" \
         --allow-root \
         --path='/var/www/html'
+    
+    echo "Vérification de l'existence de l'utilisateur 'jboyreau'..."
 fi
 
+if ! wp user get jboyreau --field=login --allow-root --path='/var/www/html'; then
+        echo "Création de l'utilisateur 'jboyreau'..."
+        wp user create jboyreau jboyreau@example.com --role=author --user_pass="$MYSQL_PASSWORD" --allow-root
+    else
+        echo "L'utilisateur 'jboyreau' existe déjà."
+fi
+cd /
 # Continue avec la commande originale
 exec "$@"
-

@@ -59,3 +59,4 @@ Docker
 
 docker compose up
 docker compose down
+wp user list --allow-root --path='/var/www/html'
