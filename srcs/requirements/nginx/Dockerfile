@@ -1,5 +1,5 @@
 # Utilise Debian Buster comme base
-FROM debian:buster
+FROM debian:bullseye
 
 # Installe NGINX
 RUN apt-get update && \

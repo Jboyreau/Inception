@@ -1,5 +1,5 @@
 # Utilise Debian Buster comme base
-FROM debian:buster
+FROM debian:bullseye
 
 # Met à jour les paquets et installe les dépendances nécessaires
 RUN apt-get update && \
@@ -39,5 +39,5 @@ EXPOSE 9000
 # Utilise le script d'entrée personnalisé
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["php-fpm7.3", "-F"]
+CMD ["php-fpm7.4", "-F"]
 

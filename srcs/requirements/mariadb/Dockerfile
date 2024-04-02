@@ -1,5 +1,5 @@
 # Utilise Debian Buster comme base
-FROM debian:buster
+FROM debian:bullseye
 
 # Met à jour les paquets et installe MariaDB
 RUN apt-get update && \
