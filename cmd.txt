@@ -60,3 +60,7 @@ Docker
 docker compose up
 docker compose down
 wp user list --allow-root --path='/var/www/html'
+docker exec -it mariadb mysql -u root -p
+SHOW DATABASES;
+USE test; SHOW TABLES;
+SELECT user, host FROM mysql.user;

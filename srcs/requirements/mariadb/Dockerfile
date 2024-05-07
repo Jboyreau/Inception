@@ -12,9 +12,6 @@ RUN mkdir -p /run/mysqld && chown mysql:mysql /run/mysqld
 # Copie le fichier de configuration personnalisé
 COPY ./conf/my.cnf /etc/mysql/my.cnf
 
-# Copie le script d'initialisation
-COPY ./conf/init-db.sql /docker-entrypoint-initdb.d/
-
 # Expose le port 3306 pour permettre la connexion à la base de données
 EXPOSE 3306
 
@@ -24,7 +21,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 
 # Utilise un script d'entrée personnalisé pour s'assurer que MariaDB est initialisé correctement
-CMD ["mysqld"]
+CMD ["mysqld_safe"]
 
 
 
